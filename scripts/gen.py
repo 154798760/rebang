@@ -82,8 +82,11 @@ html = re.sub(r'const FETCH_TIME = "[^"]*";', f'const FETCH_TIME = "{FETCH}";', 
 start = html.index('const DATA = [')
 end = html.index('const catOrder')
 html = html[:start] + data_js + "\n\n" + html[end:]
-assert '<!-- HIST_BAR -->' in html
-html = html.replace('<!-- HIST_BAR -->', hist_bar, 1)
+# 历史栏替换：兼容模板占位符 或 上一次生成的实际历史栏
+hist_pat = re.compile(r'<!-- HIST_BAR -->|<div class="hist-bar">.*?</div>\s*</div>', re.S)
+html, n = hist_pat.subn(lambda m: hist_bar, html, count=1)
+if n == 0:
+    raise SystemExit("HIST_BAR placeholder or hist-bar block not found in template")
 
 open(HTML, 'w', encoding='utf-8').write(html)
 print("HTML updated | entries:", data_js.count('{t:"'), "| cats:", len(blocks), "| FETCH:", FETCH)
