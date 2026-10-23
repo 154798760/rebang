@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""今日热榜快览 建页脚本：读 data JSON -> 替换模板 index.html 的 DATA/FETCH_TIME/历史栏 -> 存当天快照并清理 7 天前。"""
+"""今日热榜快览 建页脚本：读 data JSON -> 替换模板 index.html 的 DATA/FETCH_TIME/历史栏 -> 存当天快照并清理 15 天前。"""
 import json, re, os, shutil, datetime, zoneinfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -69,9 +69,9 @@ for cat, names in CATS.items():
     blocks.append(f'{{ cat:"{cat}", items:[\n' + ",\n".join(items) + "\n]}")
 data_js = "const DATA = [\n" + ",\n".join(blocks) + "\n];"
 
-# 历史栏：扫描 history/ 现有快照，最近 7 天（含今天）
+# 历史栏：扫描 history/ 现有快照，最近 15 天（含今天）
 existing = {f[:-5] for f in os.listdir(HIST) if f.endswith('.html') and len(f) == 15}
-dates = sorted(({TODAY} | existing))[-7:]
+dates = sorted(({TODAY} | existing))[-15:]
 hist_links = "".join(f'<a class="hist-link" href="history/{d}.html">{d}</a>' for d in dates)
 hist_bar = ('<div class="hist-bar"><span class="hist-tag">历史数据</span>'
             f'<div class="hist-links">{hist_links}</div></div>')

@@ -2,7 +2,7 @@ name: Daily Hotlist Update
 
 on:
   schedule:
-    - cron: '0 7 * * *'   # 每日北京时间 15:00（UTC 07:00）
+    - cron: '0 2,14 * * *'  # 每日北京时间 10:00 / 22:00（UTC 02:00 / 14:00）
   workflow_dispatch:      # 支持手动触发
 
 permissions:
