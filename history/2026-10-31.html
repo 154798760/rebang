@@ -110,97 +110,98 @@ footer{margin-top:24px;padding:14px 16px 0;border-top:1px solid var(--line);font
 </footer>
 
 <script>
-const FETCH_TIME = "2026-10-31 02:57";
+const FETCH_TIME = "2026-10-31 15:55";
 
 const DATA = [
 { cat:"全网热搜", items:[
   { name:"微博热搜", color:"#e6162d", icon:"微", src:"https://s.weibo.com/top/summary", rows:[
-    {t:"披荆斩棘成团名单", u:"https://s.weibo.com/weibo?q=%E6%8A%AB%E8%8D%86%E6%96%A9%E6%A3%98%E6%88%90%E5%9B%A2%E5%90%8D%E5%8D%95", h:"222万"},
-    {t:"开创新时代管党治党兴党强党新局面", u:"https://s.weibo.com/weibo?q=%E5%BC%80%E5%88%9B%E6%96%B0%E6%97%B6%E4%BB%A3%E7%AE%A1%E5%85%9A%E6%B2%BB%E5%85%9A%E5%85%B4%E5%85%9A%E5%BC%BA%E5%85%9A%E6%96%B0%E5%B1%80%E9%9D%A2", h:"156万"},
-    {t:"上淘宝趋势爆款5折起", u:"https://s.weibo.com/weibo?q=%E4%B8%8A%E6%B7%98%E5%AE%9D%E8%B6%8B%E5%8A%BF%E7%88%86%E6%AC%BE5%E6%8A%98%E8%B5%B7", h:"150万"},
-    {t:"小沈阳披荆斩棘冠军", u:"https://s.weibo.com/weibo?q=%E5%B0%8F%E6%B2%88%E9%98%B3%E6%8A%AB%E8%8D%86%E6%96%A9%E6%A3%98%E5%86%A0%E5%86%9B", h:"114万"},
-    {t:"我觉得我都要爱上厉娜了", u:"https://s.weibo.com/weibo?q=%E6%88%91%E8%A7%89%E5%BE%97%E6%88%91%E9%83%BD%E8%A6%81%E7%88%B1%E4%B8%8A%E5%8E%89%E5%A8%9C%E4%BA%86", h:"51万"},
-    {t:"金银杀跌原因", u:"https://s.weibo.com/weibo?q=%E9%87%91%E9%93%B6%E6%9D%80%E8%B7%8C%E5%8E%9F%E5%9B%A0", h:"37万"},
-    {t:"梁靖崑打哭西蒙高茨", u:"https://s.weibo.com/weibo?q=%E6%A2%81%E9%9D%96%E5%B4%91%E6%89%93%E5%93%AD%E8%A5%BF%E8%92%99%E9%AB%98%E8%8C%A8", h:"33万"},
-    {t:"英特尔", u:"https://s.weibo.com/weibo?q=%E8%8B%B1%E7%89%B9%E5%B0%94", h:"24万"},
-    {t:"WTT蒙彼利埃女单八强赛", u:"https://s.weibo.com/weibo?q=WTT%E8%92%99%E5%BD%BC%E5%88%A9%E5%9F%83%E5%A5%B3%E5%8D%95%E5%85%AB%E5%BC%BA%E8%B5%9B", h:"19万"},
-    {t:"宋慧乔是宋仲基的逆鳞", u:"https://s.weibo.com/weibo?q=%E5%AE%8B%E6%85%A7%E4%B9%94%E6%98%AF%E5%AE%8B%E4%BB%B2%E5%9F%BA%E7%9A%84%E9%80%86%E9%B3%9E", h:"19万"}
+    {t:"卖650万捐赠房产要缴450万的税", u:"https://s.weibo.com/weibo?q=%E5%8D%96650%E4%B8%87%E6%8D%90%E8%B5%A0%E6%88%BF%E4%BA%A7%E8%A6%81%E7%BC%B4450%E4%B8%87%E7%9A%84%E7%A8%8E", h:"121万"},
+    {t:"昂跑未与姆巴佩解约或两头皆输", u:"https://s.weibo.com/weibo?q=%E6%98%82%E8%B7%91%E6%9C%AA%E4%B8%8E%E5%A7%86%E5%B7%B4%E4%BD%A9%E8%A7%A3%E7%BA%A6%E6%88%96%E4%B8%A4%E5%A4%B4%E7%9A%86%E8%BE%93", h:"88万"},
+    {t:"六网协同夯实中国式现代化底座", u:"https://s.weibo.com/weibo?q=%E5%85%AD%E7%BD%91%E5%8D%8F%E5%90%8C%E5%A4%AF%E5%AE%9E%E4%B8%AD%E5%9B%BD%E5%BC%8F%E7%8E%B0%E4%BB%A3%E5%8C%96%E5%BA%95%E5%BA%A7", h:"67万"},
+    {t:"元UP全球热卖 王楚然宠粉交车", u:"https://s.weibo.com/weibo?q=%E5%85%83UP%E5%85%A8%E7%90%83%E7%83%AD%E5%8D%96+%E7%8E%8B%E6%A5%9A%E7%84%B6%E5%AE%A0%E7%B2%89%E4%BA%A4%E8%BD%A6", h:"54万"},
+    {t:"微博视界大会红毯", u:"https://s.weibo.com/weibo?q=%E5%BE%AE%E5%8D%9A%E8%A7%86%E7%95%8C%E5%A4%A7%E4%BC%9A%E7%BA%A2%E6%AF%AF", h:"46万"},
+    {t:"库里晃倒东契奇", u:"https://s.weibo.com/weibo?q=%E5%BA%93%E9%87%8C%E6%99%83%E5%80%92%E4%B8%9C%E5%A5%91%E5%A5%87", h:"39万"},
+    {t:"王子璇眼里文吉儿已经是零分朋友了", u:"https://s.weibo.com/weibo?q=%E7%8E%8B%E5%AD%90%E7%92%87%E7%9C%BC%E9%87%8C%E6%96%87%E5%90%89%E5%84%BF%E5%B7%B2%E7%BB%8F%E6%98%AF%E9%9B%B6%E5%88%86%E6%9C%8B%E5%8F%8B%E4%BA%86", h:"38万"},
+    {t:"系列长征辟谣守护澄明史实", u:"https://s.weibo.com/weibo?q=%E7%B3%BB%E5%88%97%E9%95%BF%E5%BE%81%E8%BE%9F%E8%B0%A3%E5%AE%88%E6%8A%A4%E6%BE%84%E6%98%8E%E5%8F%B2%E5%AE%9E", h:"37万"},
+    {t:"我国首次载人登月乘组计划为三人", u:"https://s.weibo.com/weibo?q=%E6%88%91%E5%9B%BD%E9%A6%96%E6%AC%A1%E8%BD%BD%E4%BA%BA%E7%99%BB%E6%9C%88%E4%B9%98%E7%BB%84%E8%AE%A1%E5%88%92%E4%B8%BA%E4%B8%89%E4%BA%BA", h:"33万"},
+    {t:"张萌马天宇其实是最难和好的一对", u:"https://s.weibo.com/weibo?q=%E5%BC%A0%E8%90%8C%E9%A9%AC%E5%A4%A9%E5%AE%87%E5%85%B6%E5%AE%9E%E6%98%AF%E6%9C%80%E9%9A%BE%E5%92%8C%E5%A5%BD%E7%9A%84%E4%B8%80%E5%AF%B9", h:"32万"}
   ]},
   { name:"知乎热榜", color:"#0f6fea", icon:"知", src:"https://www.zhihu.com/hot", rows:[
-    {t:"我军首型舰载察打一体隐身无人机「攻击 -21」在四川舰成功起降，这意味着什么？哪些亮点值得关注？", u:"https://www.zhihu.com/question/2099547313488269586", h:"940 万热度"},
-    {t:"亚马逊自由现金流「烧穿了」，谷歌的利润下降了，英特尔营收展望不及预期，三件事放一起看能说明什么？", u:"https://www.zhihu.com/question/2099444454088078280", h:"355 万热度"},
-    {t:"如何看待 2026 年 10 月 30 日 A 股集体收跌，双创指数月跌超 23%，红利股逆势走强？", u:"https://www.zhihu.com/question/2098388759943422649", h:"314 万热度"},
-    {t:"如何评价前小米高管王腾的公司发布首款智能戒指 ISHO Ring，定价 1799-2199 元？", u:"https://www.zhihu.com/question/2099246181104858185", h:"273 万热度"},
-    {t:"一喝水，尿就多，是肾坏了吗？", u:"https://www.zhihu.com/question/615575278", h:"267 万热度"},
-    {t:"如何评价《后会友期》中王子璇文吉儿这对旧友，为何网友说她们的友情令人窒息？", u:"https://www.zhihu.com/question/2099186593601004461", h:"262 万热度"},
-    {t:"39 岁中国老板在泰国工地遇袭身亡，4 名缅甸劳工自首，哪些信息值得关注？", u:"https://www.zhihu.com/question/2099037753308722726", h:"252 万热度"},
-    {t:"为什么医院每天那么大的现金流还是不挣钱，甚至还亏钱？", u:"https://www.zhihu.com/question/2067251258914759948", h:"252 万热度"},
-    {t:"23 岁抗癌网红夏夏去世，18 岁确诊骨肉瘤，截肢后父母失联，怎样看待她的抗癌经历？骨肉瘤是种怎样的疾病？", u:"https://www.zhihu.com/question/2098900391664382722", h:"251 万热度"},
-    {t:"国际油价大幅上涨，国家出手继续对成品油价临时调控，汽油每吨应涨 440 元实涨 345 元，如何解读？", u:"https://www.zhihu.com/question/2099157654643986768", h:"230 万热度"}
+    {t:"四千元的冰柜被「仅退款」，买家称已销毁，商家跨千里发现商品仍在使用，买卖双方各执一词，责任该如何认定？", u:"https://www.zhihu.com/question/2098158094538883742", h:"822 万热度"},
+    {t:"BLG 抽中 HLE，最后一轮中韩大战谁输谁回家，如何评价瑞士轮的最后一轮抽签？", u:"https://www.zhihu.com/question/2099786388279505951", h:"381 万热度"},
+    {t:"DeepSeek 居然会对用户说「我去吃饭了」「我去睡了」，为啥会出现这样的现象？", u:"https://www.zhihu.com/question/2066223484309434997", h:"347 万热度"},
+    {t:"为什么古代的食用油那么珍贵，老百姓们还能吃得起炸油条？", u:"https://www.zhihu.com/question/2078556614060253554", h:"279 万热度"},
+    {t:"网友无意中摔坏孩子的双层保温碗，发现里面满是霉菌，水都是臭的，为啥会这样？使用这种碗有啥风险？", u:"https://www.zhihu.com/question/2096642260750357241", h:"262 万热度"},
+    {t:"这几天股市为啥下滑这么大？", u:"https://www.zhihu.com/question/2099100677146518362", h:"257 万热度"},
+    {t:"长鑫科技前三季度净利润 1320 亿元，营收暴增 7 倍多，拟最高 20 亿元回购股份并注销其中 50%，如何解读？", u:"https://www.zhihu.com/question/2099567932477130631", h:"253 万热度"},
+    {t:"热度过后现在该如何评价《黑神话：悟空》这款游戏?", u:"https://www.zhihu.com/question/1905629150670229818", h:"249 万热度"},
+    {t:"人民锐评发文驳斥「中国 AI 跑偏论」，如何看待中美在 AI 落地路径上的差异？", u:"https://www.zhihu.com/question/2099418216976102291", h:"246 万热度"},
+    {t:"阿维塔新车发布会取消，具体是咋回事？背后的原因可能是啥？", u:"https://www.zhihu.com/question/2099095002139681389", h:"234 万热度"}
   ]},
   { name:"今日头条热榜", color:"#e82d2d", icon:"头", src:"https://www.toutiao.com/trending/", rows:[
-    {t:"黄金大跌 铜价为何创新高", u:"https://www.toutiao.com/trending/7701487346830557220/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%228%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227701487346830557220%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%BB%84%E9%87%91%E5%A4%A7%E8%B7%8C+%E9%93%9C%E4%BB%B7%E4%B8%BA%E4%BD%95%E5%88%9B%E6%96%B0%E9%AB%98%22%7D&rank=&style_id=40132&topic_id=7701487346830557220", h:"1109.4万"},
-    {t:"今年全国实现生娃基本不花钱", u:"https://www.toutiao.com/trending/7701865571654258218/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227701865571654258218%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BB%8A%E5%B9%B4%E5%85%A8%E5%9B%BD%E5%AE%9E%E7%8E%B0%E7%94%9F%E5%A8%83%E5%9F%BA%E6%9C%AC%E4%B8%8D%E8%8A%B1%E9%92%B1%22%7D&rank=&style_id=40132&topic_id=7701865571654258218", h:"1003.8万"},
-    {t:"全面从严治党和鼓励担当作为内在统一", u:"https://www.toutiao.com/article/7702387567160934939", h:"908.3万"},
-    {t:"邵永灵：乌克兰低头了", u:"https://www.toutiao.com/trending/7702449996901142070/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702449996901142070%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%82%B5%E6%B0%B8%E7%81%B5%EF%BC%9A%E4%B9%8C%E5%85%8B%E5%85%B0%E4%BD%8E%E5%A4%B4%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7702449996901142070", h:"821.8万"},
-    {t:"第一个15万亿经济大省要来了吗", u:"https://www.toutiao.com/trending/7702315150556007974/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702315150556007974%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%AC%AC%E4%B8%80%E4%B8%AA15%E4%B8%87%E4%BA%BF%E7%BB%8F%E6%B5%8E%E5%A4%A7%E7%9C%81%E8%A6%81%E6%9D%A5%E4%BA%86%E5%90%97%22%7D&rank=&style_id=40132&topic_id=7702315150556007974", h:"743.6万"},
-    {t:"人民日报：警惕“中国AI跑偏论”", u:"https://www.toutiao.com/trending/7701987261797482550/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2212%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227701987261797482550%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BA%BA%E6%B0%91%E6%97%A5%E6%8A%A5%EF%BC%9A%E8%AD%A6%E6%83%95%E2%80%9C%E4%B8%AD%E5%9B%BDAI%E8%B7%91%E5%81%8F%E8%AE%BA%E2%80%9D%22%7D&rank=&style_id=40132&topic_id=7701987261797482550", h:"672.9万"},
-    {t:"孟加拉国总理无视引导不向日国旗鞠躬", u:"https://www.toutiao.com/trending/7701850479986491419/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227701850479986491419%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%AD%9F%E5%8A%A0%E6%8B%89%E5%9B%BD%E6%80%BB%E7%90%86%E6%97%A0%E8%A7%86%E5%BC%95%E5%AF%BC%E4%B8%8D%E5%90%91%E6%97%A5%E5%9B%BD%E6%97%97%E9%9E%A0%E8%BA%AC%22%7D&rank=&style_id=40132&topic_id=7701850479986491419", h:"608.8万"},
-    {t:"证监会：全力稳市场稳预期", u:"https://www.toutiao.com/trending/7702386714458931763/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702386714458931763%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%AF%81%E7%9B%91%E4%BC%9A%EF%BC%9A%E5%85%A8%E5%8A%9B%E7%A8%B3%E5%B8%82%E5%9C%BA%E7%A8%B3%E9%A2%84%E6%9C%9F%22%7D&rank=&style_id=40132&topic_id=7702386714458931763", h:"550.9万"},
-    {t:"于东来：建议制度支持消费入座", u:"https://www.toutiao.com/trending/7701543757581340201/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227701543757581340201%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BA%8E%E4%B8%9C%E6%9D%A5%EF%BC%9A%E5%BB%BA%E8%AE%AE%E5%88%B6%E5%BA%A6%E6%94%AF%E6%8C%81%E6%B6%88%E8%B4%B9%E5%85%A5%E5%BA%A7%22%7D&rank=&style_id=40132&topic_id=7701543757581340201", h:"498.5万"},
-    {t:"女子万元手机火车上充电时被顺走", u:"https://www.toutiao.com/trending/7702085348448895030/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702085348448895030%22%2C%22hot_board_impr_id%22%3A%2220261031025712353914553B73798862E1%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A5%B3%E5%AD%90%E4%B8%87%E5%85%83%E6%89%8B%E6%9C%BA%E7%81%AB%E8%BD%A6%E4%B8%8A%E5%85%85%E7%94%B5%E6%97%B6%E8%A2%AB%E9%A1%BA%E8%B5%B0%22%7D&rank=&style_id=40132&topic_id=7702085348448895030", h:"451.0万"}
+    {t:"官方披露：将有两名中国人登陆月球", u:"https://www.toutiao.com/trending/7702661932407128127/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702661932407128127%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%AE%98%E6%96%B9%E6%8A%AB%E9%9C%B2%EF%BC%9A%E5%B0%86%E6%9C%89%E4%B8%A4%E5%90%8D%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%99%BB%E9%99%86%E6%9C%88%E7%90%83%22%7D&rank=&style_id=40132&topic_id=7702661932407128127", h:"2543.7万"},
+    {t:"日本访华代表团鞠躬谢罪", u:"https://www.toutiao.com/trending/7702460899273818633/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%228%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702460899273818633%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%97%A5%E6%9C%AC%E8%AE%BF%E5%8D%8E%E4%BB%A3%E8%A1%A8%E5%9B%A2%E9%9E%A0%E8%BA%AC%E8%B0%A2%E7%BD%AA%22%7D&rank=&style_id=40132&topic_id=7702460899273818633", h:"2301.6万"},
+    {t:"保持定力持之以恒推进全面从严治党", u:"https://www.toutiao.com/trending/7702293740597313578/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702293740597313578%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BF%9D%E6%8C%81%E5%AE%9A%E5%8A%9B%E6%8C%81%E4%B9%8B%E4%BB%A5%E6%81%92%E6%8E%A8%E8%BF%9B%E5%85%A8%E9%9D%A2%E4%BB%8E%E4%B8%A5%E6%B2%BB%E5%85%9A%22%7D&rank=&style_id=40132&topic_id=7702293740597313578", h:"2082.6万"},
+    {t:"钓鱼男子被钱塘江涌潮吞没后游上岸", u:"https://www.toutiao.com/trending/7702691550194761778/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702691550194761778%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%92%93%E9%B1%BC%E7%94%B7%E5%AD%90%E8%A2%AB%E9%92%B1%E5%A1%98%E6%B1%9F%E6%B6%8C%E6%BD%AE%E5%90%9E%E6%B2%A1%E5%90%8E%E6%B8%B8%E4%B8%8A%E5%B2%B8%22%7D&rank=&style_id=40132&topic_id=7702691550194761778", h:"1884.4万"},
+    {t:"中国找矿获重大突破", u:"https://www.toutiao.com/trending/7702667013956927497/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702667013956927497%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E5%9B%BD%E6%89%BE%E7%9F%BF%E8%8E%B7%E9%87%8D%E5%A4%A7%E7%AA%81%E7%A0%B4%22%7D&rank=&style_id=40132&topic_id=7702667013956927497", h:"1705.1万"},
+    {t:"小沈阳披荆斩棘冠军", u:"https://www.toutiao.com/trending/7701865571654340138/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227701865571654340138%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%B0%8F%E6%B2%88%E9%98%B3%E6%8A%AB%E8%8D%86%E6%96%A9%E6%A3%98%E5%86%A0%E5%86%9B%22%7D&rank=&style_id=40132&topic_id=7701865571654340138", h:"1542.8万"},
+    {t:"退休外交官历经520天重走长征路", u:"https://www.toutiao.com/trending/7702385421061358106/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702385421061358106%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%80%80%E4%BC%91%E5%A4%96%E4%BA%A4%E5%AE%98%E5%8E%86%E7%BB%8F520%E5%A4%A9%E9%87%8D%E8%B5%B0%E9%95%BF%E5%BE%81%E8%B7%AF%22%7D&rank=&style_id=40132&topic_id=7702385421061358106", h:"1396.0万"},
+    {t:"老人离世 多年未探望亲闺女要分房产", u:"https://www.toutiao.com/trending/7702644181156905002/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702644181156905002%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%80%81%E4%BA%BA%E7%A6%BB%E4%B8%96+%E5%A4%9A%E5%B9%B4%E6%9C%AA%E6%8E%A2%E6%9C%9B%E4%BA%B2%E9%97%BA%E5%A5%B3%E8%A6%81%E5%88%86%E6%88%BF%E4%BA%A7%22%7D&rank=&style_id=40132&topic_id=7702644181156905002", h:"1263.2万"},
+    {t:"勒布伦2比1孙颖莎", u:"https://www.toutiao.com/trending/7702295260063334963/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%228%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702295260063334963%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%8B%92%E5%B8%83%E4%BC%A62%E6%AF%941%E5%AD%99%E9%A2%96%E8%8E%8E%22%7D&rank=&style_id=40132&topic_id=7702295260063334963", h:"1143.0万"},
+    {t:"“假笑男孩”16岁了", u:"https://www.toutiao.com/trending/7702384966264668198/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227702384966264668198%22%2C%22hot_board_impr_id%22%3A%222026103115551765AF7445A5D8D8EDC7D2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E2%80%9C%E5%81%87%E7%AC%91%E7%94%B7%E5%AD%A9%E2%80%9D16%E5%B2%81%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7702384966264668198", h:"1034.2万"}
   ]},
   { name:"澎湃热榜", color:"#0072bc", icon:"澎", src:"https://www.thepaper.cn/", rows:[
-    {t:"中共中央新闻发布会丨介绍和解读党的二十届五中全会精神", u:"https://www.thepaper.cn/newsDetail_forward_34361191", h:""},
-    {t:"胡和平：《决定》把“增强共产党人的党性”摆在战略任务部署的第一部分", u:"https://www.thepaper.cn/newsDetail_forward_34366573", h:""},
     {t:"证监会：全力稳市场稳预期，持续提升资本市场韧性和信心", u:"https://www.thepaper.cn/newsDetail_forward_34369285", h:""},
-    {t:"12345热线不是“许愿池”！多地破除“0差评”考核", u:"https://www.thepaper.cn/newsDetail_forward_34316736", h:""},
-    {t:"刀刃上的托举：一名失意冰球运动员的人生下半场", u:"https://www.thepaper.cn/newsDetail_forward_34357974", h:""},
-    {t:"马上评｜存2500变25000，“离柜概不负责”别单向约束储户", u:"https://www.thepaper.cn/newsDetail_forward_34367679", h:""},
-    {t:"A股三大股指午后全线翻红转涨", u:"https://www.thepaper.cn/newsDetail_forward_34367690", h:""},
+    {t:"12345便民热线不能成为许愿池！有地方明确不再接这几类诉求", u:"https://www.thepaper.cn/newsDetail_forward_34370849", h:""},
+    {t:"高温正“偷走”工时与睡眠：去年人均因热损失47.7工作小时、22.7小时睡眠", u:"https://www.thepaper.cn/newsDetail_forward_34366212", h:""},
+    {t:"阿里宣布与苹果合作，将千问集成至Apple智能", u:"https://www.thepaper.cn/newsDetail_forward_34374626", h:""},
     {t:"新生拿“大体老师”摆拍发朋友圈，媒体：做不到尊重还是趁早脱了白大褂", u:"https://www.thepaper.cn/newsDetail_forward_34368332", h:""},
-    {t:"未更新基建、过于依赖人力：追尾事故后西班牙铁路安全漏洞受拷问", u:"https://www.thepaper.cn/newsDetail_forward_34366600", h:""},
-    {t:"学生摆拍大体老师头骨标本，长沙民政医学院通报：给予校纪处分", u:"https://www.thepaper.cn/newsDetail_forward_34366976", h:""}
+    {t:"马上评｜把“大体老师”头骨当道具摆拍，医学生的敬畏心去哪了", u:"https://www.thepaper.cn/newsDetail_forward_34369296", h:""},
+    {t:"中国首次载人月球探测任务乘组计划由3人组成，其中两人着陆月球表面", u:"https://www.thepaper.cn/newsDetail_forward_34375545", h:""},
+    {t:"银行职员输错数字存两千五变两万五，储户以“离柜概不负责”为由拒退，湖北一法院认定该条款无效", u:"https://www.thepaper.cn/newsDetail_forward_34368841", h:""},
+    {t:"网红边牧“锄头”被盗杀案最新进展：主人已收到30万和解费", u:"https://www.thepaper.cn/newsDetail_forward_34368712", h:""},
+    {t:"媒体评张雪“拉黑”母亲：警惕躲在背后收割流量的人", u:"https://www.thepaper.cn/newsDetail_forward_34374735", h:""}
   ]}
 ]},
 { cat:"视频热榜", items:[
   { name:"抖音总榜", color:"#111", icon:"抖", src:"https://www.douyin.com/hot/", rows:[
-    {t:"外交部回应姆巴佩道歉。#媒体原创", u:"https://www.douyin.com/video/7701650758013439232", h:"4201万"},
-    {t:"饭店的寒假工，员工餐吃中毒！", u:"https://www.douyin.com/video/7701636738015612082", h:"3960万"},
-    {t:"外交部回应姆巴佩道歉。", u:"https://www.douyin.com/video/7701689634316700970", h:"3538万"},
-    {t:"日剧《VIVANT》歪曲历史刻意抹黑中国，外交部：日本国内始终存在一股势力，企图通过文化产品丑化抹黑中国。#媒体原创", u:"https://www.douyin.com/video/7701998894749650226", h:"2376万"},
-    {t:"治国必先治党，党兴才能国强。新时代以来，习近平总书记站在党和国家事业发展全局高度，围绕全面从严治党发表一系列重要论述。“全面从严治党永远在路上”，彰显中国共产党人的清醒、恒心和韧劲。#习语 #媒体原创", u:"https://www.douyin.com/video/7701886207453695266", h:"2200万"},
-    {t:"姆巴佩“翻车” “吃饭砸锅”言行暴露了什么？ （责编：胡蝶 编辑：吕世通）", u:"https://www.douyin.com/video/7701698511783398698", h:"2069万"},
-    {t:"是谁的二创图啊，快来认领 #刘晓艳 #刘晓艳郑马名场面渲染大赛#刘晓艳渲染大赛reaction#热点趋势策划人", u:"https://www.douyin.com/video/7701937317162663539", h:"1501万"},
-    {t:"全村最双标的狗子😂", u:"https://www.douyin.com/video/7701296632361626319", h:"1486万"},
-    {t:"所有难熬的时刻都落幕。 她勇敢，你平安，就是最好的结局。 欢迎你，我的小宝贝。 从此多了一份软肋，也多了无限铠甲。", u:"https://www.douyin.com/video/7701687703985359098", h:"1260万"},
-    {t:"台湾远嫁河南 谢谢爸爸，从一开始就支持我跨海奔赴所爱，纵有万分不舍，依旧满满祝福。我很感谢也很爱你。#fafa婚礼 #台湾女生 #兜里有fafa #结婚 #出嫁", u:"https://www.douyin.com/video/7701323538992708454", h:"1141万"}
+    {t:"依旧四人携手（婚纱版），娶到心爱的人就像打了场胜仗！#致歉一切 #婚纱 #结婚胜方mvp结算画面 #cortis #德州花园婚纱摄影 @德州花园婚纱摄影（谁拍谁美）", u:"https://www.douyin.com/video/7702058542509222498", h:"4619万"},
+    {t:"饭店的寒假工，菜单上没有的菜！", u:"https://www.douyin.com/video/7702051754418392714", h:"3303万"},
+    {t:"前车正常避险急刹，后车男子追尾。面对交警询问，他竟先问AI软件如何定责，还让交警“重学交规”。交警：追尾车辆全责！@警民直通车-上海", u:"https://www.douyin.com/video/7702360656565062939", h:"2130万"},
+    {t:"花73元从中国坐火车去越南，到处都在说中国话，体验百万大亨的一天#韶音OpenDots2 #韶音耳夹耳机", u:"https://www.douyin.com/video/7701774020290546944", h:"1928万"},
+    {t:"饭店的寒假工，员工餐吃中毒！", u:"https://www.douyin.com/video/7701636738015612082", h:"1880万"},
+    {t:"向中国人民道歉！总台确认收到皇马道歉函。", u:"https://www.douyin.com/video/7701667609661443362", h:"1738万"},
+    {t:"精神小伙认亲进豪门，十八岁太奶奶重新教他做人!#臻浓营养美味尽享", u:"https://www.douyin.com/video/7701694328590748134", h:"1515万"},
+    {t:"369：想赢才会兴奋，怕输才会紧张 #369 #TES战胜BLG #S16瑞士轮 #英雄联盟S16 #2026全球总决赛", u:"https://www.douyin.com/video/7702267807228087567", h:"1471万"},
+    {t:"外交部回应姆巴佩道歉。#媒体原创", u:"https://www.douyin.com/video/7701650758013439232", h:"1458万"},
+    {t:"方便的话见一面。 （yc：@眼镜超（汽修二班） ）", u:"https://www.douyin.com/video/7701656195223873531", h:"1387万"}
   ]},
   { name:"哔哩哔哩全站日榜", color:"#fb7299", icon:"B", src:"https://www.bilibili.com/v/popular/rank/all", rows:[
-    {t:"透明的镜片居然有影子？观众的问题让我脑洞大开！", u:"https://www.bilibili.com/video/BV15vxc6bEZz", h:"188.5万"},
-    {t:"三阶段了 杀手一曲Golden Hour征服老哥", u:"https://www.bilibili.com/video/BV1nLsf6eESp", h:"181.4万"},
-    {t:"白蚁豪宅被大象拿来擦屁股，没想到擦出了一个微观水世界！", u:"https://www.bilibili.com/video/BV14txF65Efd", h:"349.0万"},
-    {t:"【独家】《罗小黑战记》第41话 开始学习吧小黑同学【10月国创】", u:"https://www.bilibili.com/video/BV1CUso6AELi", h:"467.5万"},
-    {t:"“我本该命途齐天”【孙悟空＆新·与天齐】", u:"https://www.bilibili.com/video/BV1bnsZ6GEN3", h:"60.0万"},
-    {t:"《此弟不宜久留》", u:"https://www.bilibili.com/video/BV1pzxw6yEMH", h:"186.1万"},
-    {t:"《润魂子》1-5合集 纯享版【AI全民制作人】", u:"https://www.bilibili.com/video/BV1zRx76SEJQ", h:"155.3万"},
-    {t:"CPOPwave出海长红IP——《原神》让世界认识中国游戏", u:"https://www.bilibili.com/video/BV17sxY6xEWK", h:"91.0万"},
-    {t:"奶龙＆豆包《Trouble Maker》token没啦【AI MV大赛】", u:"https://www.bilibili.com/video/BV1stsZ6iESz", h:"189.4万"},
-    {t:"《星游记》前传电影启动，方向黑洞，目标彩虹海！", u:"https://www.bilibili.com/video/BV18Kxv6jETs", h:"51.5万"}
+    {t:"【独家】《凡人修仙传之慕兰之战》第22集【总第198集】", u:"https://www.bilibili.com/video/BV1vVxi68EWD", h:"263.4万"},
+    {t:"灭建国的超能力", u:"https://www.bilibili.com/video/BV1ugxq6HEfH", h:"282.4万"},
+    {t:"小时候直肠子就这样讲话", u:"https://www.bilibili.com/video/BV1QqxY6jEPY", h:"161.2万"},
+    {t:"假如主角身边全是奸臣(大合集)一次性看完!", u:"https://www.bilibili.com/video/BV11Txg6BEPe", h:"257.9万"},
+    {t:"烽火地带巴克什全新阵营对抗玩法，11月5日，即刻抉择！", u:"https://www.bilibili.com/video/BV1LRxe69EMP", h:"66.0万"},
+    {t:"原歌词越正，改成小调就越阴？你熟悉的童真歌曲变成小调后谁反差最大？", u:"https://www.bilibili.com/video/BV1KGxv6GEo4", h:"85.5万"},
+    {t:"透明的镜片居然有影子？观众的问题让我脑洞大开！", u:"https://www.bilibili.com/video/BV15vxc6bEZz", h:"359.2万"},
+    {t:"我用Ai让AUDI和键盘侠打了一架", u:"https://www.bilibili.com/video/BV1UAsf6kEGw", h:"103.2万"},
+    {t:"【丧病中配】当2077的CV来配音《赛博朋克：边缘行者2》（第一话）", u:"https://www.bilibili.com/video/BV1VaxY6DE5v", h:"74.0万"},
+    {t:"“我本该命途齐天”【孙悟空＆新·与天齐】", u:"https://www.bilibili.com/video/BV1bnsZ6GEN3", h:"105.9万"}
   ]}
 ]},
 { cat:"科技与AI", items:[
   { name:"36氪24小时热榜", color:"#2e6be6", icon:"36", src:"https://36kr.com/hot-list/catalog", rows:[
-    {t:"8点1氪丨外交部回应三丽鸥取消Vivant联名；科创50指数创新低；上海一宜家餐厅开始实行“消费入座”，周二、周四有保安劝离", u:"https://www.36kr.com/p/4047618190883331", h:""},
-    {t:"刚刚，奥特曼自曝OpenAI新模型：让我兴奋到两晚没睡", u:"https://www.36kr.com/p/4047595233098247", h:""},
-    {t:"一台MacBook卖11.26万，苹果首款触屏本登场，发光Logo回来了", u:"https://www.36kr.com/p/4047729287346692", h:""},
-    {t:"好消息：我们能多活9年了", u:"https://www.36kr.com/p/4047676161047046", h:""},
-    {t:"一群Smart，打不过一辆萤火虫", u:"https://www.36kr.com/p/4047643422587401", h:""},
-    {t:"AGI 时代，中产全都完蛋了", u:"https://www.36kr.com/p/4047012606671104", h:""},
-    {t:"部署态加速，智元要打通物理AI全链路", u:"https://www.36kr.com/p/4047032889800965", h:""},
+    {t:"腾讯阿里，下周决战", u:"https://www.36kr.com/p/4048311524030978", h:""},
+    {t:"重磅，AI补全人类史上最大数学证明，数学家当场泪崩", u:"https://www.36kr.com/p/4048319038208262", h:""},
+    {t:"GPT-6“看不懂 3D”实锤，250道题只拿0.53分，Claude没及格", u:"https://www.36kr.com/p/4048320092912129", h:""},
+    {t:"离开人类，AI能独自活下去么？从图灵测试到“鲁滨逊测试”", u:"https://www.36kr.com/p/4048324787698180", h:""},
+    {t:"第一批用上WorkBuddy的乙方，已经提前下班了", u:"https://www.36kr.com/p/4048085285763584", h:""},
+    {t:"马斯克脑机接口最狠升级，Grok接入大脑，意念可操控AI了", u:"https://www.36kr.com/p/4048035636558087", h:""},
+    {t:"刚刚，国行 Apple 智能官宣，但满血 SiriAI 还得等", u:"https://www.36kr.com/p/4049055297436164", h:""},
     {t:"ChatGPT Pro 额度翻倍：是让步，不是福利？", u:"https://www.36kr.com/p/4047841517484292", h:""}
   ]},
   { name:"果壳科学人", color:"#137752", icon:"果", src:"https://www.guokr.com/", rows:[
+    {t:"云贵川拿它下饭，全世界却拿它做香水", u:"https://www.guokr.com/article/470586/", h:""},
     {t:"人在干坏事的时候是不嫌累的，搞研究也是", u:"https://www.guokr.com/article/470583/", h:""},
     {t:"AI灭绝人类会怎样？“那会影响我司股价”", u:"https://www.guokr.com/article/470581/", h:""},
     {t:"好消息：我们能多活9年！坏消息：生病的日子就有2年！", u:"https://www.guokr.com/article/470580/", h:""},
@@ -209,22 +210,21 @@ const DATA = [
     {t:"刚发布的苹果触屏电脑真烧心：这是屏坏了，还是故意的？", u:"https://www.guokr.com/article/470571/", h:""},
     {t:"《令人心动的 offer 8》，造星失败！", u:"https://www.guokr.com/article/470569/", h:""},
     {t:"想让 AI 好好干活，光靠骂能行吗？", u:"https://www.guokr.com/article/470568/", h:""},
-    {t:"被提名155次，一次没中：诺奖头号陪跑王，是个兽医", u:"https://www.guokr.com/article/470564/", h:""},
-    {t:"大家给看看！古画里仙鹤身后那缕仙气飘飘的“Xiang云”，到底是哪个Xiang？", u:"https://www.guokr.com/article/470563/", h:""}
+    {t:"被提名155次，一次没中：诺奖头号陪跑王，是个兽医", u:"https://www.guokr.com/article/470564/", h:""}
   ]}
 ]},
 { cat:"医药健康", items:[
   { name:"医学界", color:"#0e8f6a", icon:"医", src:"https://www.yxj.org.cn/", rows:[
-    {t:"22个临床问题、10大更新要点！慢阻肺病诊治指南（2026年修订版）发布", u:"https://www.yxj.org.cn/detailPage?articleId=511356", h:""},
     {t:"聚集总部优质资源，复旦大学附属中山医院青浦新城院区启动试运行！", u:"https://www.yxj.org.cn/detailPage?articleId=511493", h:""},
+    {t:"22个临床问题、10大更新要点！慢阻肺病诊治指南（2026年修订版）发布", u:"https://www.yxj.org.cn/detailPage?articleId=511356", h:""},
+    {t:"心梗治疗正在告别“一刀切”：看清斑块侵蚀，约1/3患者或可避免支架", u:"https://www.yxj.org.cn/detailPage?articleId=511258", h:""},
     {t:"甘肃白银一医院党委委员被查！", u:"https://www.yxj.org.cn/detailPage?articleId=439980", h:""},
     {t:"日本启动全球首例牙齿再生药物临床试验，吃药就能长出新牙？", u:"https://www.yxj.org.cn/detailPage?articleId=439978", h:""},
     {t:"儿童急性鼻窦炎选择头孢克肟还是头孢地尼？为什么？", u:"https://www.yxj.org.cn/detailPage?articleId=439490", h:""},
     {t:"铜绿假单胞菌下呼吸道感染如何经验治疗？2表总结！", u:"https://www.yxj.org.cn/detailPage?articleId=439489", h:""},
     {t:"大腿红斑伴丘疹、脓疱，和\"流浪\"有关吗？", u:"https://www.yxj.org.cn/detailPage?articleId=439577", h:""},
     {t:"黑色素瘤还合并癫痫，用这个免疫调节剂还不行？", u:"https://www.yxj.org.cn/detailPage?articleId=438753", h:""},
-    {t:"破解高血压控制难题，2024 OCC-WCC世界心脏联盟主席精彩呈现", u:"https://www.yxj.org.cn/detailPage?articleId=439940", h:""},
-    {t:"多家新建三级大医院6月启用，规划床位过万张", u:"https://www.yxj.org.cn/detailPage?articleId=439934", h:""}
+    {t:"破解高血压控制难题，2024 OCC-WCC世界心脏联盟主席精彩呈现", u:"https://www.yxj.org.cn/detailPage?articleId=439940", h:""}
   ]}
 ]}
 ];
