@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今日热榜快览</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d2435'/%3E%3Cpath d='M9 20c3 2 11 2 14 0M11 15c2 1.5 8 1.5 10 0M13 10c1.5 1 5 1 6.5 0' stroke='%23f59e0b' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#1d2435; --sub:#5b6472; --line:#e6e8ee;
+  --blue:#2563eb; --purple:#7c3aed; --green:#059669; --orange:#ea580c; --red:#e6162d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:13px;line-height:1.5}
+.wrap{max-width:1320px;margin:0 auto;padding:0 16px 40px}
+
+/* 头部 */
+header{background:var(--ink);color:#fff;padding:14px 0 12px}
+.hd-inner{max-width:1320px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px}
+h1{font-size:19px;font-weight:800}
+h1 .dot{color:#f59e0b}
+.tag{font-size:11px;background:rgba(255,255,255,.14);padding:2px 9px;border-radius:12px}
+.meta{font-size:11.5px;color:rgba(255,255,255,.72)}
+.meta b{color:#fff}
+
+/* 导航 */
+nav{position:sticky;top:0;z-index:50;background:rgba(246,247,249,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:7px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.nav-btn{border:1px solid var(--line);background:#fff;color:var(--sub);padding:4px 13px;border-radius:15px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:500}
+.nav-btn.active{color:#fff;border-color:transparent}
+.nav-btn[data-cat=""].active{background:#1d2435}
+.nav-btn[data-cat="全网热搜"].active{background:var(--blue)}
+.nav-btn[data-cat="视频热榜"].active{background:var(--red)}
+.nav-btn[data-cat="公众号热文"].active{background:#059669}
+.nav-btn[data-cat="科技与AI"].active{background:var(--purple)}
+.nav-btn[data-cat="医药健康"].active{background:#0e8f6a}
+.nav-btn[data-cat="技术社区"].active{background:var(--orange)}
+.nav-note{margin-left:auto;font-size:11px;color:var(--sub)}
+
+/* 分类区 */
+.cat-block{margin-top:18px}
+.cat-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.cat-bar{width:4px;height:16px;border-radius:2px}
+.cat-name{font-size:16px;font-weight:800}
+.cat-count{font-size:11px;color:var(--sub)}
+.cat-blue .cat-bar{background:var(--blue)}
+.cat-red .cat-bar{background:var(--red)}
+.cat-green .cat-bar{background:#059669}
+.cat-purple .cat-bar{background:var(--purple)}
+.cat-teal .cat-bar{background:#0e8f6a}
+.cat-orange .cat-bar{background:var(--orange)}
+
+/* 来源卡片 - 紧凑 */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.grid.cols-1{grid-template-columns:1fr}
+.src-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.src-head{display:flex;align-items:center;gap:7px;padding:8px 12px 7px;border-bottom:1px solid var(--line)}
+.src-ico{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex:none}
+.src-name{font-size:13.5px;font-weight:700}
+.src-link{margin-left:auto;font-size:11px;color:var(--sub);text-decoration:none;background:#eef1f7;border-radius:4px;padding:1px 6px;flex:none}
+.src-link:hover{color:#2563eb;background:#e3e8f3}
+.row{display:flex;gap:8px;padding:6px 12px;border-bottom:1px solid #f0f1f5;align-items:flex-start}
+.row:last-child{border-bottom:none}
+.row:hover{background:#fafbfc}
+.rk{flex:none;width:18px;height:18px;border-radius:5px;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff;margin-top:2px}
+.rk-1{background:#f59e0b}.rk-2{background:#94a3b8}.rk-3{background:#c97b4a}.rk-n{background:#e3e7ef;color:#5b6472}
+.rk-body{flex:1;min-width:0}
+.rk-top{display:flex;align-items:flex-start;gap:6px}
+.rk-title{font-size:13px;font-weight:400;line-height:1.4;cursor:pointer;word-break:break-word;color:var(--ink);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em}
+.rk-title:hover{color:#2563eb;text-decoration:underline}
+.rk-heat{flex:none;font-size:10.5px;color:var(--sub);white-space:nowrap;background:#eef1f7;border-radius:4px;padding:0 5px}
+
+/* 历史数据 */
+.hist-bar{display:flex;align-items:center;gap:14px;margin-top:22px;padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+.hist-tag{flex:none;color:var(--sub)}
+.hist-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.hist-link{color:var(--sub);text-decoration:none;padding:2px 10px;border:1px solid var(--line);border-radius:12px;white-space:nowrap}
+.hist-link:hover{color:#2563eb;border-color:#2563eb}
+.hist-link.cur{color:#fff;background:#2563eb;border-color:#2563eb}
+/* 脚注 */
+footer{margin-top:24px;padding:14px 16px 0;border-top:1px solid var(--line);font-size:11px;color:var(--sub);display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center}
+.to-top{margin-left:auto;border:1px solid var(--line);background:#fff;color:var(--sub);padding:4px 12px;border-radius:14px;font-size:11px;cursor:pointer;font-family:inherit}
+.to-top:hover{color:var(--ink)}
+
+@media (max-width:1080px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-inner">
+    <h1>今日热榜<span class="dot">快览</span></h1>
+    <span class="tag">AI 摘要</span>
+    <span class="meta">抓取 <b id="fetch-time">--</b> · 9 源 · 每日 15:00 更新</span>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner" id="nav"></div>
+</nav>
+
+<main class="wrap" id="app"></main>
+
+<div class="hist-bar"><span class="hist-tag">历史数据</span><div class="hist-links"><a class="hist-link" href="history/2026-10-22.html">2026-10-22</a><a class="hist-link" href="history/2026-10-23.html">2026-10-23</a><a class="hist-link" href="history/2026-10-24.html">2026-10-24</a><a class="hist-link" href="history/2026-10-25.html">2026-10-25</a><a class="hist-link" href="history/2026-10-26.html">2026-10-26</a><a class="hist-link" href="history/2026-10-27.html">2026-10-27</a><a class="hist-link" href="history/2026-10-28.html">2026-10-28</a><a class="hist-link" href="history/2026-10-29.html">2026-10-29</a><a class="hist-link" href="history/2026-10-30.html">2026-10-30</a><a class="hist-link" href="history/2026-10-31.html">2026-10-31</a><a class="hist-link" href="history/2026-11-01.html">2026-11-01</a><a class="hist-link" href="history/2026-11-02.html">2026-11-02</a><a class="hist-link" href="history/2026-11-03.html">2026-11-03</a><a class="hist-link" href="history/2026-11-04.html">2026-11-04</a><a class="hist-link" href="history/2026-11-05.html" class="hist-link cur"">2026-11-05</a></div></div>
+<footer>
+  <span>数据来自各平台公开榜单，版权归原平台所有；点击标题可在新标签页打开原文，仅供参考。</span>
+  <button class="to-top" id="to-top">回到顶部</button>
+</footer>
+
+<script>
+const FETCH_TIME = "2026-11-05 04:39";
+
+const DATA = [
+{ cat:"全网热搜", items:[
+  { name:"微博热搜", color:"#e6162d", icon:"微", src:"https://s.weibo.com/top/summary", rows:[
+    {t:"嫁金钗忘删AI水印了", u:"https://s.weibo.com/weibo?q=%E5%AB%81%E9%87%91%E9%92%97%E5%BF%98%E5%88%A0AI%E6%B0%B4%E5%8D%B0%E4%BA%86", h:"28万"},
+    {t:"高市早苗以怪异姿势面见日本天皇", u:"https://s.weibo.com/weibo?q=%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97%E4%BB%A5%E6%80%AA%E5%BC%82%E5%A7%BF%E5%8A%BF%E9%9D%A2%E8%A7%81%E6%97%A5%E6%9C%AC%E5%A4%A9%E7%9A%87", h:"13万"},
+    {t:"方浩明以亲身经历感知中国", u:"https://s.weibo.com/weibo?q=%E6%96%B9%E6%B5%A9%E6%98%8E%E4%BB%A5%E4%BA%B2%E8%BA%AB%E7%BB%8F%E5%8E%86%E6%84%9F%E7%9F%A5%E4%B8%AD%E5%9B%BD", h:"12万"},
+    {t:"刘宇宁京东超市过关斩价", u:"https://s.weibo.com/weibo?q=%E5%88%98%E5%AE%87%E5%AE%81%E4%BA%AC%E4%B8%9C%E8%B6%85%E5%B8%82%E8%BF%87%E5%85%B3%E6%96%A9%E4%BB%B7", h:"12万"},
+    {t:"许飞看到之后不得迷死啊", u:"https://s.weibo.com/weibo?q=%E8%AE%B8%E9%A3%9E%E7%9C%8B%E5%88%B0%E4%B9%8B%E5%90%8E%E4%B8%8D%E5%BE%97%E8%BF%B7%E6%AD%BB%E5%95%8A", h:"12万"},
+    {t:"上岸第一件先娶意中人", u:"https://s.weibo.com/weibo?q=%E4%B8%8A%E5%B2%B8%E7%AC%AC%E4%B8%80%E4%BB%B6%E5%85%88%E5%A8%B6%E6%84%8F%E4%B8%AD%E4%BA%BA", h:"12万"},
+    {t:"后会友期第二季呼声TOP10", u:"https://s.weibo.com/weibo?q=%E5%90%8E%E4%BC%9A%E5%8F%8B%E6%9C%9F%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%91%BC%E5%A3%B0TOP10", h:"10万"},
+    {t:"东风奕派M8天元激光版正式上市", u:"https://s.weibo.com/weibo?q=%E4%B8%9C%E9%A3%8E%E5%A5%95%E6%B4%BEM8%E5%A4%A9%E5%85%83%E6%BF%80%E5%85%89%E7%89%88%E6%AD%A3%E5%BC%8F%E4%B8%8A%E5%B8%82", h:"10万"},
+    {t:"叶非夜实名举报郭宇欣偷税漏税", u:"https://s.weibo.com/weibo?q=%E5%8F%B6%E9%9D%9E%E5%A4%9C%E5%AE%9E%E5%90%8D%E4%B8%BE%E6%8A%A5%E9%83%AD%E5%AE%87%E6%AC%A3%E5%81%B7%E7%A8%8E%E6%BC%8F%E7%A8%8E", h:"10万"},
+    {t:"韩网吐槽没有年轻人演了吗", u:"https://s.weibo.com/weibo?q=%E9%9F%A9%E7%BD%91%E5%90%90%E6%A7%BD%E6%B2%A1%E6%9C%89%E5%B9%B4%E8%BD%BB%E4%BA%BA%E6%BC%94%E4%BA%86%E5%90%97", h:"10万"}
+  ]},
+  { name:"知乎热榜", color:"#0f6fea", icon:"知", src:"https://www.zhihu.com/hot", rows:[
+    {t:"抖音副总裁李亮发文称「我真心认为秦朔不是蠢就是坏」，如何看待双方观点及指控？", u:"https://www.zhihu.com/question/2101258456724402498", h:"546 万热度"},
+    {t:"我请客的饭局席间一人感谢主赐他日用的饮食，我开玩笑说那这顿我不买单了，他为何会生气？", u:"https://www.zhihu.com/question/406887759", h:"399 万热度"},
+    {t:"《海贼王》路飞被曝解锁「黑色猿猴」新形态，如何评价这一设定？", u:"https://www.zhihu.com/question/2101250269363319000", h:"258 万热度"},
+    {t:"儿子沉迷看电视，爸爸「魔改」电视系统，看 10 分钟抽查一道题，这招怎么样？对孩子管用吗？", u:"https://www.zhihu.com/question/2101035704512005455", h:"171 万热度"},
+    {t:"为什么陈赓的风评一边倒的好？", u:"https://www.zhihu.com/question/1902454179068380492", h:"167 万热度"},
+    {t:"2026 年 11 月 4 日 A 股超 4600 只个股飘红，三大指数集体大涨，科创 50 暴涨近 10%，怎样解读？", u:"https://www.zhihu.com/question/2100541228118962863", h:"155 万热度"},
+    {t:"《英雄联盟》S16 首场八强赛决胜局遭遇超长暂停，现场发生了什么？", u:"https://www.zhihu.com/question/2101252648439476700", h:"142 万热度"},
+    {t:"豆包用户数被红果超越，这说明了什么？普通人对 AI 的真实需求被高估了吗？", u:"https://www.zhihu.com/question/2100943272122250679", h:"137 万热度"},
+    {t:"《西游记》真假美猴王之后，唐僧再也没有念过紧箍咒，是孙悟空真的被换掉了吗？", u:"https://www.zhihu.com/question/2098427617066103119", h:"136 万热度"},
+    {t:"如果军长已经坚决下达了必须执行的命令，而旅长坚定认为命令是错的，一定会导致战役的失败，那怎么办？", u:"https://www.zhihu.com/question/2099319258408825808", h:"135 万热度"}
+  ]},
+  { name:"今日头条热榜", color:"#e82d2d", icon:"头", src:"https://www.toutiao.com/trending/", rows:[
+    {t:"新疆军区数千名新兵夜间紧急拉动演练", u:"https://www.toutiao.com/trending/7704168520272855562/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704168520272855562%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%96%B0%E7%96%86%E5%86%9B%E5%8C%BA%E6%95%B0%E5%8D%83%E5%90%8D%E6%96%B0%E5%85%B5%E5%A4%9C%E9%97%B4%E7%B4%A7%E6%80%A5%E6%8B%89%E5%8A%A8%E6%BC%94%E7%BB%83%22%7D&rank=&style_id=40132&topic_id=7704168520272855562", h:"2165.7万"},
+    {t:"高市早苗以怪异姿势面见日本天皇", u:"https://www.toutiao.com/trending/7703198021613731891/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227703198021613731891%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97%E4%BB%A5%E6%80%AA%E5%BC%82%E5%A7%BF%E5%8A%BF%E9%9D%A2%E8%A7%81%E6%97%A5%E6%9C%AC%E5%A4%A9%E7%9A%87%22%7D&rank=&style_id=40132&topic_id=7703198021613731891", h:"1959.6万"},
+    {t:"新技术、新成果亮相互联网之光博览会", u:"https://www.toutiao.com/article/7704247999190319670", h:"1773.1万"},
+    {t:"51岁阿姨参加健美比赛 体脂率12%", u:"https://www.toutiao.com/trending/7704283013869223945/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704283013869223945%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%2251%E5%B2%81%E9%98%BF%E5%A7%A8%E5%8F%82%E5%8A%A0%E5%81%A5%E7%BE%8E%E6%AF%94%E8%B5%9B+%E4%BD%93%E8%84%82%E7%8E%8712%25%22%7D&rank=&style_id=40132&topic_id=7704283013869223945", h:"1604.4万"},
+    {t:"攻击-21为何能拿下全球第一", u:"https://www.toutiao.com/trending/7704244482618691113/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704244482618691113%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%94%BB%E5%87%BB-21%E4%B8%BA%E4%BD%95%E8%83%BD%E6%8B%BF%E4%B8%8B%E5%85%A8%E7%90%83%E7%AC%AC%E4%B8%80%22%7D&rank=&style_id=40132&topic_id=7704244482618691113", h:"1451.7万"},
+    {t:"优质蛋白排行榜出炉", u:"https://www.toutiao.com/trending/7703261218630909978/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227703261218630909978%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BC%98%E8%B4%A8%E8%9B%8B%E7%99%BD%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%87%BA%E7%82%89%22%7D&rank=&style_id=40132&topic_id=7703261218630909978", h:"1313.6万"},
+    {t:"AI短剧《持械入宋》为何火了", u:"https://www.toutiao.com/trending/7704243006215294507/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704243006215294507%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22AI%E7%9F%AD%E5%89%A7%E3%80%8A%E6%8C%81%E6%A2%B0%E5%85%A5%E5%AE%8B%E3%80%8B%E4%B8%BA%E4%BD%95%E7%81%AB%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7704243006215294507", h:"1188.6万"},
+    {t:"沃尔沃XC70落地不到20万", u:"https://www.toutiao.com/trending/7704283015114998322/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704283015114998322%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%B2%83%E5%B0%94%E6%B2%83XC70%E8%90%BD%E5%9C%B0%E4%B8%8D%E5%88%B020%E4%B8%87%22%7D&rank=&style_id=40132&topic_id=7704283015114998322", h:"1075.5万"},
+    {t:"红军为什么必须过草地", u:"https://www.toutiao.com/trending/7704183309756350518/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704183309756350518%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BA%A2%E5%86%9B%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E8%BF%87%E8%8D%89%E5%9C%B0%22%7D&rank=&style_id=40132&topic_id=7704183309756350518", h:"973.1万"},
+    {t:"A股迎来“大奇迹日” 后市怎么看", u:"https://www.toutiao.com/trending/7704311844353101339/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704311844353101339%22%2C%22hot_board_impr_id%22%3A%2220261105043929FCB9A811F35F6EF03CB3%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22A%E8%82%A1%E8%BF%8E%E6%9D%A5%E2%80%9C%E5%A4%A7%E5%A5%87%E8%BF%B9%E6%97%A5%E2%80%9D+%E5%90%8E%E5%B8%82%E6%80%8E%E4%B9%88%E7%9C%8B%22%7D&rank=&style_id=40132&topic_id=7704311844353101339", h:"880.5万"}
+  ]},
+  { name:"澎湃热榜", color:"#0072bc", icon:"澎", src:"https://www.thepaper.cn/", rows:[
+    {t:"四川泸州“花坛藏尸案”将一审宣判：被告人多次整容伪造身份，被害人儿子幼年丧母称“有太多事想为她做”", u:"https://www.thepaper.cn/newsDetail_forward_34404481", h:""},
+    {t:"南京大学回应“智慧教室”争议：否认到课率挂钩成绩，称已不再统计抬头率", u:"https://www.thepaper.cn/newsDetail_forward_34401814", h:""},
+    {t:"上海交警主动联系台湾演员明道归还其遗失物，国台办回应", u:"https://www.thepaper.cn/newsDetail_forward_34402332", h:""},
+    {t:"中国信通院、华为、腾讯、阿里等联合发布公约：共同抵制利用智能体实施算法压榨、黑灰产等行为", u:"https://www.thepaper.cn/newsDetail_forward_34405097", h:""},
+    {t:"23岁抗癌博主“夏夏”离世，他们从各地赶来送别女孩最后一程", u:"https://www.thepaper.cn/newsDetail_forward_34403162", h:""},
+    {t:"马上评｜频繁把张雪送上热搜，不如让他安心做好企业", u:"https://www.thepaper.cn/newsDetail_forward_34403000", h:""},
+    {t:"AI有意识吗？——从脑机智能与脑机接口谈起", u:"https://www.thepaper.cn/newsDetail_forward_34390827", h:""},
+    {t:"西南交大通报“硕士论文被指抄袭”：属实，撤销王某硕士学位", u:"https://www.thepaper.cn/newsDetail_forward_34405254", h:""},
+    {t:"马上评｜网购演出服集体退货一再发生，说明光道歉没用", u:"https://www.thepaper.cn/newsDetail_forward_34402161", h:""},
+    {t:"言短意长｜大学课堂“抬头率”低背后的真问题", u:"https://www.thepaper.cn/newsDetail_forward_34402847", h:""}
+  ]}
+]},
+{ cat:"视频热榜", items:[
+  { name:"抖音总榜", color:"#111", icon:"抖", src:"https://www.douyin.com/hot/", rows:[
+    {t:"每个人都有追求幸福的权利 也都该有敢于 审视幸福的勇气 目标不是结婚 而是真切的感受到幸福 所以祝宫雪和贾鑫 新婚快乐 每天都快乐#小城良方", u:"https://www.douyin.com/video/7703486126555902874", h:"5492万"},
+    {t:"见证历史：世界首位徒步绕地球一圈的狠人，正式完成挑战！ #人类群星闪耀时#卡尔布什比#名场面", u:"https://www.douyin.com/video/7703602183127797026", h:"3357万"},
+    {t:"一杯奶茶，47克糖？记者实测8款现制饮品，含糖量超乎你的想象。转给你常喝奶茶的小伙伴~ #媒体原创", u:"https://www.douyin.com/video/7703861375465966884", h:"3243万"},
+    {t:"饭店的寒假工，菜里吃出抹布！", u:"https://www.douyin.com/video/7703766228816439515", h:"2895万"},
+    {t:"惊险一幕！小女孩骑滑板车突然“鬼探头”冲出，司机防御性驾驶及时避险。提醒：家长务必看管好孩子，切勿让孩子在车辆盲区或路口玩耍！@看星星", u:"https://www.douyin.com/video/7703816888597384457", h:"2854万"},
+    {t:"#媒体原创 全球首款全尺寸超仿真机人亮相#世界互联网大会乌镇峰会，售价169800元，主打情感陪伴，观众：只要它能满足我的需求，价格可以接受。", u:"https://www.douyin.com/video/7703529672511957210", h:"2489万"},
+    {t:"打车时司机以为我是非洲人 因为我的妈妈在非洲种植面包树，那你还拍过一个电视剧呢！我记得叫《长在面包树上的人》～", u:"https://www.douyin.com/video/7703492658471627682", h:"1878万"},
+    {t:"惊险！钓鱼男子被钱塘江涌潮瞬间吞没，所幸最终自行游上岸脱险！提醒：远离危险水域，切勿心存侥幸！@张看穿", u:"https://www.douyin.com/video/7702856520945372470", h:"1825万"},
+    {t:"该跟爸妈说早安还是晚安呢～？ #严老师言子多 #重庆家庭实录 #熬夜", u:"https://www.douyin.com/video/7703597142987787529", h:"1811万"},
+    {t:"依旧四人携手（婚纱版），一种很新的方式来展示婚纱照～#致歉一切 #婚纱 #CORTIS #赵雨凡 #金主训", u:"https://www.douyin.com/video/7703544523050264936", h:"1535万"}
+  ]},
+  { name:"哔哩哔哩全站日榜", color:"#fb7299", icon:"B", src:"https://www.bilibili.com/v/popular/rank/all", rows:[
+    {t:"【2026全球总决赛】11月4日 TES vs IG", u:"https://www.bilibili.com/video/BV1XwxU6xEnL", h:"808.1万"},
+    {t:"《崩坏：星穹铁道》即兴巡演PV——「当阿哈来敲门」", u:"https://www.bilibili.com/video/BV1XJ4g6WEyL", h:"278.7万"},
+    {t:"【只对你有感觉】|“【恋爱の小曲】”", u:"https://www.bilibili.com/video/BV1w5xh6sEEz", h:"392.8万"},
+    {t:"AIGC 月光鱼屋丨第三集 汆白肉", u:"https://www.bilibili.com/video/BV1hTxt6aEdm", h:"37.4万"},
+    {t:"【原神一条龙全收集】至冬7.2(更新中)新基捷城+如翼之峰/宝箱/摩拉堆/玉帛/冰之印/原神7.2一条龙", u:"https://www.bilibili.com/video/BV1PyxQ6sEbH", h:"43.9万"},
+    {t:"乌萨奇修仙传·极", u:"https://www.bilibili.com/video/BV1wh4P6XEkC", h:"70.2万"},
+    {t:"吓哭了！冲碎天钉！钟离史上最帅高光！什么天钉、圣土化？还以为是减速带呢！钟离先其它七神和六国一步，直接出手用一枚摩拉通关僭继试炼过场动画！还让闲云传递情报", u:"https://www.bilibili.com/video/BV14qxS6HEwZ", h:"74.7万"},
+    {t:"阿黄有房了【AI全民制作人】", u:"https://www.bilibili.com/video/BV17d4g6fEAi", h:"138.0万"},
+    {t:"《这是我儿子？》", u:"https://www.bilibili.com/video/BV1PF4g6ME26", h:"250.7万"},
+    {t:"不看电视不接电话的中国人", u:"https://www.bilibili.com/video/BV15sxS68EFq", h:"33.4万"}
+  ]}
+]},
+{ cat:"科技与AI", items:[
+  { name:"36氪24小时热榜", color:"#2e6be6", icon:"36", src:"https://36kr.com/hot-list/catalog", rows:[
+    {t:"8点1氪丨豆包用户数被红果超越；iPhone Duo屏幕开裂争议，特努斯首度回应；美股要“通宵”了，纳斯达克将全天交易23小时", u:"https://www.36kr.com/p/4054687391143044", h:""},
+    {t:"年轻人，已经不买车了", u:"https://www.36kr.com/p/4054721087902855", h:""},
+    {t:"GPT-6.2 Astra要来了，神秘「双模型」闪现API，OpenAI火速撤回", u:"https://www.36kr.com/p/4054834101326985", h:""},
+    {t:"iPad mini 8 首发评测：本该是一台完美的平板电脑", u:"https://www.36kr.com/p/4054101446726789", h:""},
+    {t:"手机配置全方位缩水，硬件降级只能苦苦咱用户了？", u:"https://www.36kr.com/p/4054861669275529", h:""},
+    {t:"月薪8万招人，一群FDE却接不到单｜风向", u:"https://www.36kr.com/p/4054788668429440", h:""},
+    {t:"连夜实测 iPhone 国行 AI，亮点和槽点都在这了", u:"https://www.36kr.com/p/4054652756792200", h:""},
+    {t:"张雪彻底炸锅，怒怼网友年薪10万嫌低", u:"https://www.36kr.com/p/4055120234551173", h:""}
+  ]},
+  { name:"果壳科学人", color:"#137752", icon:"果", src:"https://www.guokr.com/", rows:[
+    {t:"建议先别更新国行 Apple 智能，纯差评", u:"https://www.guokr.com/article/470619/", h:""},
+    {t:"国人不买了！奢侈品市值蒸发2万亿，6位数一台氧舱成富豪新宠", u:"https://www.guokr.com/article/470618/", h:""},
+    {t:"疯狂的红果，正“屠戮”全世界", u:"https://www.guokr.com/article/470614/", h:""},
+    {t:"还有比大冷天吃一锅炖肉更美的事儿吗？那就是再来一锅！", u:"https://www.guokr.com/article/470613/", h:""},
+    {t:"“切除睾丸是最坏的情况，再者退一步讲，一个蛋也可以正常工作”", u:"https://www.guokr.com/article/470612/", h:""},
+    {t:"许飞画地为牢，厉娜点了麦当劳：没接住的掏心掏肺为什么更好看？", u:"https://www.guokr.com/article/470609/", h:""},
+    {t:"“AI将在十年内攻克癌症”，最先被这话伤到的是病床边的人", u:"https://www.guokr.com/article/470606/", h:""},
+    {t:"最近有哪些好吃到令人叫绝的水果？有两种编辑部99%没吃过！", u:"https://www.guokr.com/article/470604/", h:""},
+    {t:"“恨不得卸载患者手机里的豆包”，大战AI的医生已疯", u:"https://www.guokr.com/article/470603/", h:""},
+    {t:"呛死红毛猩猩的印尼林火，并非一场偶然的天灾", u:"https://www.guokr.com/article/470602/", h:""}
+  ]}
+]},
+{ cat:"医药健康", items:[
+  { name:"医学界", color:"#0e8f6a", icon:"医", src:"https://www.yxj.org.cn/", rows:[
+    {t:"《柳叶刀·呼吸病学》最新发布 | 中国慢阻肺病专委会报告：近1亿患者，防治体系如何破局", u:"https://www.yxj.org.cn/detailPage?articleId=511588", h:""},
+    {t:"专科医生张世华去世，曾被患者称为“真正的仁医”", u:"https://www.yxj.org.cn/detailPage?articleId=511684", h:""},
+    {t:"破解直肠癌免疫困局，UNION研究交出生存与安全双优答卷 | ESMO 2026", u:"https://www.yxj.org.cn/detailPage?articleId=511593", h:""},
+    {t:"特宝生物长效生长激素10mg规格获批， 助力临床个体化规范化诊疗", u:"https://www.yxj.org.cn/detailPage?articleId=511589", h:""},
+    {t:"甘肃白银一医院党委委员被查！", u:"https://www.yxj.org.cn/detailPage?articleId=439980", h:""},
+    {t:"日本启动全球首例牙齿再生药物临床试验，吃药就能长出新牙？", u:"https://www.yxj.org.cn/detailPage?articleId=439978", h:""},
+    {t:"儿童急性鼻窦炎选择头孢克肟还是头孢地尼？为什么？", u:"https://www.yxj.org.cn/detailPage?articleId=439490", h:""},
+    {t:"铜绿假单胞菌下呼吸道感染如何经验治疗？2表总结！", u:"https://www.yxj.org.cn/detailPage?articleId=439489", h:""},
+    {t:"大腿红斑伴丘疹、脓疱，和\"流浪\"有关吗？", u:"https://www.yxj.org.cn/detailPage?articleId=439577", h:""},
+    {t:"黑色素瘤还合并癫痫，用这个免疫调节剂还不行？", u:"https://www.yxj.org.cn/detailPage?articleId=438753", h:""}
+  ]}
+]}
+];
+
+const catOrder = ["全网热搜","视频热榜","科技与AI","医药健康"];
+const CAT_CLASS = {"全网热搜":"cat-blue","视频热榜":"cat-red","公众号热文":"cat-green","科技与AI":"cat-purple","医药健康":"cat-teal","技术社区":"cat-orange"};
+let activeCat = null;
+
+function rankClass(i){ return i<=3 ? "rk-"+i : "rk-n"; }
+
+function renderNav(){
+  const nav = document.getElementById("nav");
+  let html = `<button class="nav-btn active" data-cat="">全部</button>`;
+  catOrder.forEach(c => { html += `<button class="nav-btn" data-cat="${c}">${c}</button>`; });
+  html += `<span class="nav-note">点分类筛选 · 点标题在新标签页打开原文</span>`;
+  nav.innerHTML = html;
+  nav.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      nav.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeCat = btn.dataset.cat;
+      renderApp();
+    });
+  });
+}
+
+function renderApp(){
+  const app = document.getElementById("app");
+  let html = "";
+  DATA.filter(d => !activeCat || d.cat === activeCat).forEach(block => {
+    const total = block.items.reduce((s,x)=>s+x.rows.length,0);
+    html += `<section class="cat-block ${CAT_CLASS[block.cat]}">`;
+    const nc = block.items.length === 4 ? 2 : Math.min(block.items.length, 3);
+    html += `<div class="cat-head"><span class="cat-bar"></span><span class="cat-name">${block.cat}</span><span class="cat-count">${block.items.length} 源 · ${total} 条</span></div><div class="grid cols-${nc}">`;
+    block.items.forEach(src => {
+      html += `<div class="src-card"><div class="src-head"><span class="src-ico" style="background:${src.color}">${src.icon}</span><span class="src-name">${src.name}</span><a class="src-link" href="${src.src}" target="_blank" rel="noopener">来源 ↗</a></div>`;
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      src.rows.forEach((r,i) => {
+        html += `<div class="row"><span class="rk ${rankClass(i+1)}">${i+1}</span><div class="rk-body">`;
+        html += `<div class="rk-top"><a class="rk-title" href="${r.u}" title="${esc(r.t)}" target="_blank" rel="noopener">${r.t}</a>${r.h?`<span class="rk-heat">${r.h}</span>`:""}</div></div></div>`;
+      });
+      html += `</div>`;
+    });
+    html += `</div></section>`;
+  });
+  app.innerHTML = html;
+}
+
+document.getElementById("fetch-time").textContent = FETCH_TIME;
+renderNav();
+renderApp();
+document.getElementById("to-top").addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+</script>
+</body>
+</html>
